@@ -1,5 +1,6 @@
 require('dotenv').config();
 const tmi = require('tmi.js');
+const fs = require('fs')
 const MyTools = require('./module/tools.js');
 const { simpleResponse, kiraResponses } = require('./module/response.js')
 
@@ -7,6 +8,9 @@ const twitchBot = [ 'streamelements', 'nightbot', 'streamlabs' ]
 
 let midaPaint = null
 let voteList = []
+
+let rawdata = fs.readFileSync('channel.json');
+const joinChannelList = JSON.parse(rawdata);
 
 const textFilter = (msg) => {
 	var _msg = msg
@@ -40,7 +44,7 @@ const client = new tmi.Client({
 		username: process.env.TWITCH_ACCOUNT,
 		password: process.env.TWITCH_OAUTH
 	},
-	channels: [ 'vu84mida','eretria036','kira5033','death9999999' ]
+	channels: joinChannelList
 });
 
 client.connect().catch(console.error);
@@ -94,15 +98,15 @@ client.on('message', (channel, tags, messages, self) => {
 		}else{
 			client.say(channel, `@${tags['display-name']} 呀，米達還沒穿就要人家脫，你很急唷~ Kappa `);
 		}
-    }
-    if(command === '!穿' && _channel === 'vu84mida'){
-			if(midaPaint === null || midaPaint === false){
-				midaPaint = true
-				client.say(channel, `米達，@${tags['display-name']} 提醒你，海水退了記得穿上褲子`);
-			}else{
-				client.say(channel, `@${tags['display-name']} 呀，你想要米達熱死嗎~ LUL `);
-			}
-    }
+	}
+	if(command === '!穿' && _channel === 'vu84mida'){
+		if(midaPaint === null || midaPaint === false){
+			midaPaint = true
+			client.say(channel, `米達，@${tags['display-name']} 提醒你，海水退了記得穿上褲子`);
+		}else{
+			client.say(channel, `@${tags['display-name']} 呀，你想要米達熱死嗎~ LUL `);
+		}
+	}
 
 	if(command === '!7d' && parseInt(argument) > 0) {
 		var answer = Math.ceil(parseInt(argument) / 7) * 7 
