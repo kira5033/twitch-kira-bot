@@ -34,6 +34,15 @@ module.exports.simpleResponse = {
 		},
 		whiteList : [ 'vu84mida', 'kira5033' ]
 	},
+	"!喘" : {
+		cooldown : 20,
+		status : true,
+		text : (name) => {
+			var result = '米達喘！ https://clips.twitch.tv/AgreeableAlluringSnakeBloodTrail-xNm0YEFbu640N7nw'
+			return result
+		},
+		whiteList : [ 'vu84mida' ]
+	},
 	"!581" : {
 		cooldown : 1,
 		status : true,

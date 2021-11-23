@@ -137,7 +137,7 @@ client.on('message', (channel, tags, messages, self) => {
 				voteList[_channel].voteY = 0
 				voteList[_channel].voteMember = []
 			}, 1000 * executeTime)
-			client.say(channel, `發起一項投票「${argument}」，同意請打Y，不同意請打N`)
+			client.say(channel, `發起一項投票「${argument}」，同意請打Y，不同意請打N，投票時間 ${executeTime} 秒`)
 		}
 	}
 
