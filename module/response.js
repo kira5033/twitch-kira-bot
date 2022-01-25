@@ -69,7 +69,7 @@ module.exports.simpleResponse = {
 			MyTools.shuffleArray(stringDB)
 			return stringDB[MyTools.getRandomArray(stringDB)].replace('{{name}}', name)
 		},
-		whiteList : [ 'vu84mida', 'death9999999', 'kira5033', 'eretria036' ]
+		whiteList : [ 'vu84mida', 'death9999999', 'kira5033', 'eretria036', 'touckay86542' ]
 	},
 	"!啾滴" : {
 		cooldown : 1,
@@ -88,32 +88,6 @@ module.exports.simpleResponse = {
 							.replace('{{nickname}}', megami[MyTools.getRandomArray(megami)])
 		},
 		whiteList : [ 'vu84mida', 'kira5033', 'eretria036' ]
-	},
-	"!跑跑" : {
-		cooldown : 1,
-		status : true,
-		text : (name) => {
-			var stringDB = [
-				'跑跑：「 {{name}} 今天吃土了嗎? 我這有批好便宜的土，要不要來一些?」',
-				'跑跑：「 {{name}} 看我 —— 美麗的新娘捧花 ~ 」',
-				'跑跑：「 {{name}} 看我 —— 清純的新娘捧花 ~ 」',
-				'跑跑：「 {{name}} 看我 —— 動人的新娘捧花 ~ 」',
-				'跑跑：「 {{name}} 看我 —— 卓越的新娘捧花 ~ 」',
-			]
-			return stringDB[MyTools.getRandomArray(stringDB)].replace('{{name}}', name)
-		},
-		whiteList : [ 'vu84mida', 'kira5033', 'eretria036' ]
-	},
-	"!米達" : {
-		cooldown : 1,
-		status : false,
-		text : (name) => {
-			var stringDB = [
-				'{{name}}，你懂裝監視器嗎? StinkyGlitch ',
-			]
-			return stringDB[MyTools.getRandomArray(stringDB)].replace('{{name}}', name)
-		},
-		whiteList : [ 'vu84mida', 'kira5033' ]
 	}
 }
 
@@ -146,7 +120,7 @@ module.exports.kiraResponses = {
 			}
 			return message
 		},
-		whiteList : [ 'vu84mida', 'death9999999', 'kira5033', 'eretria036' ]
+		whiteList : [ 'vu84mida', 'death9999999', 'kira5033', 'eretria036', 'touckay86542' ]
 	},
 	"!kira" : {
 		cooldown : 1,

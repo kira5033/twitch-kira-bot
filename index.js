@@ -18,6 +18,11 @@ const textFilter = (msg) => {
 	return _msg
 }
 
+const isAd = (msg) => {
+	var _msg = msg.toLowerCase()
+	return _msg.indexOf('buy') !== -1 && ( _msg.indexOf('follower') !== -1 || _msg.indexOf('viewer') !== -1 )
+}
+
 const giveMeTime = (hour) => {
 	var text
 	if(hour >= 5 && hour <= 10){
@@ -60,9 +65,14 @@ client.on('message', (channel, tags, messages, self) => {
 	// console.log(`${channel} | ${tags['display-name']} - ${message}`)
 	let message = textFilter(messages)
 
-	if(self) return;
+	if(self || twitchBot.indexOf(tags['username'].toLowerCase()) !== -1) return;
 
-	if(twitchBot.indexOf(tags['username'].toLowerCase()) !== -1) return;
+	if(isAd(message)){
+		console.log('Is Ad.');
+		// client.ban(channel, tags['username']);
+	}else{
+		console.log('Not Ad.');
+	}
 
 	const [ _command, argument, argument2 ] = message.split(' ')
 	const whatTimeIsNow = giveMeTime(MyTools.getTime('H'))
@@ -115,6 +125,7 @@ client.on('message', (channel, tags, messages, self) => {
 		}, 500)
 	}
 
+	/* Vote System - Start */
 	if(command === '!vt' && argument !== undefined && argument2 !== undefined){
 		var voteWhiteList = [ 'vu84mida', 'death9999999', 'kira5033', 'eretria036' ]
 		if(voteWhiteList.indexOf(_channel) === -1 || (!isBroadcaster && !isMod)) return
@@ -139,6 +150,7 @@ client.on('message', (channel, tags, messages, self) => {
 			}, 1000 * executeTime)
 			client.say(channel, `發起一項投票「${argument}」，同意請打Y，不同意請打N，投票時間 ${executeTime} 秒`)
 		}
+		return
 	}
 
 	if(voteList[_channel] !== undefined && voteList[_channel].voteStatus === true){
@@ -153,6 +165,8 @@ client.on('message', (channel, tags, messages, self) => {
 			}
 		}
 	}
+
+	/* Vote System - End */
 
 });
 
