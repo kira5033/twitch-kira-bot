@@ -67,11 +67,9 @@ client.on('message', (channel, tags, messages, self) => {
 
 	if(self || twitchBot.indexOf(tags['username'].toLowerCase()) !== -1) return;
 
+	// Ban for AdBot
 	if(isAd(message)){
-		console.log('Is Ad.');
-		// client.ban(channel, tags['username']);
-	}else{
-		console.log('Not Ad.');
+		client.ban(channel, tags['username'], 'Ban for AdBot');
 	}
 
 	const [ _command, argument, argument2 ] = message.split(' ')
