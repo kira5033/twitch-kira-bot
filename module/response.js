@@ -23,8 +23,6 @@ const foodDB = {
 	'none': ['醒醒吧 你沒錢','你口袋有灰塵 還想吃','旁邊有土 去吃吧','不是要減肥麻 沒東西給你','你要想想，空氣不用錢','你要不要看一下你的體脂，還敢吃啊','西北風很香的喔','樹皮炒草根，隨便吃','低頭看看你的腳趾，你還看得到嗎','你不胖只是長的比較擋路','你今天量體重了嗎','你先低頭看看你那團結的腹肌','不能吃太胖喔 會被殺掉的！']
 }
 
-
-
 module.exports.simpleResponse = {
 	"!抽" : {
 		cooldown : 1,
@@ -88,6 +86,28 @@ module.exports.simpleResponse = {
 							.replace('{{nickname}}', megami[MyTools.getRandomArray(megami)])
 		},
 		whiteList : [ 'vu84mida', 'kira5033', 'eretria036' ]
+	},
+	"!滑手機" : {
+		cooldown : 1,
+		status : true,
+		text : (name) => {
+			var stringDB = [
+				'月上柳梢頭，啾滴滑手機',
+				'人生在世不稱意，不如低頭滑手機',
+				'舉頭望明月，啾滴滑手機',
+				'採菊東籬下，悠然滑手機',
+				'唧唧復唧唧，啾滴滑手機',
+				'垂死病中驚坐起，又見啾滴滑手機',
+				'春眠不覺曉，啾滴滑手機',
+				'楊家有女初長成，一看竟在滑手機',
+				'明日復明日，啾滴滑手機',
+				'啾滴扮妝坐車遊，回眸只見滑手機',
+				'啾滴滑手機，不如高臥且加餐',
+			]
+			MyTools.shuffleArray(stringDB)
+			return stringDB[MyTools.getRandomArray(stringDB)]
+		},
+		whiteList : [ 'vu84mida', 'kira5033' ]
 	}
 }
 
