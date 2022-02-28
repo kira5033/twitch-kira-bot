@@ -20,7 +20,10 @@ const textFilter = (msg) => {
 
 const isAd = (msg) => {
 	var _msg = msg.toLowerCase()
-	return _msg.indexOf('buy') !== -1 && ( _msg.indexOf('follower') !== -1 || _msg.indexOf('viewer') !== -1 )
+	var s1 = _msg.indexOf('buy') !== -1 && ( _msg.indexOf('follower') !== -1 || _msg.indexOf('viewer') !== -1 )
+	var s2 = _msg.indexOf('shop') !== -1 && ( _msg.indexOf('follower') !== -1 || _msg.indexOf('viewer') !== -1 )
+    var s3 = _msg.indexOf('best') !== -1 && ( _msg.indexOf('follower') !== -1 || _msg.indexOf('viewer') !== -1 )
+	return s1 || s2 || s3
 }
 
 const giveMeTime = (hour) => {
