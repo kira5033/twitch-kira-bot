@@ -108,6 +108,19 @@ module.exports.simpleResponse = {
 			return stringDB[MyTools.getRandomArray(stringDB)]
 		},
 		whiteList : [ 'vu84mida', 'kira5033' ]
+	},
+	"!小u" : {
+		cooldown : 1,
+		status : true,
+		text : (name) => {
+			var stringDB = [
+				'{{name}} 你說的是「人見人愛，花見花開，聰明伶俐，活潑可愛」的小U嗎'
+			]
+			MyTools.shuffleArray(stringDB)
+			return stringDB[MyTools.getRandomArray(stringDB)]
+						.replace('{{name}}', name)
+		},
+		whiteList : [ 'vu84mida', 'kira5033' ]
 	}
 }
 
