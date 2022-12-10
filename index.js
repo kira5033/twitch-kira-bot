@@ -3,6 +3,31 @@ const tmi = require('tmi.js');
 const fs = require('fs')
 const MyTools = require('./module/tools.js');
 const { simpleResponse, kiraResponses } = require('./module/response.js')
+const { Configuration, OpenAIApi } = require("openai");
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
+
+var eightballCoolStatus = false;
+const eightball = async (question) => {
+    var eightballResponse = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: question + "\nA:",
+        temperature: 0,
+        max_tokens: 256,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+        stop: ["\n"],
+      });
+    var eightballAnswer = eightballResponse.data.choices[0].text;
+    if(eightballAnswer === " No."){
+		eightballAnswer = "りしれ供さ小";
+    }
+	return eightballAnswer;
+}
 
 const twitchBot = [ 'streamelements', 'nightbot', 'streamlabs' ]
 
@@ -125,6 +150,17 @@ client.on('message', (channel, tags, messages, self) => {
 		setTimeout(function(){
 			client.say(channel, `下一個七日是 ${answer} >> ${tags['display-name']}`)
 		}, 500)
+	}
+
+	if(command === '!問' && argument !== "" && eightballCoolStatus === false) {
+		var answer = eightball(argument)
+		eightballCoolStatus = true;
+		setTimeout(function(){
+			client.say(channel, `${answer} >> ${tags['display-name']}`)
+		}, 500)
+		setTimeout(function(){
+			eightballCoolStatus = false;
+		}, 10000)
 	}
 
 	/* Vote System - Start */
