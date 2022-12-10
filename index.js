@@ -152,7 +152,7 @@ client.on('message', (channel, tags, messages, self) => {
 		}, 500)
 	}
 
-	if(command === '!問' && argument !== "" && eightballCoolStatus === false) {
+	if(command === '!問' && argument !== "" && eightballCoolStatus === false && _channel === 'kira5033') {
 		var answer = eightball(argument)
 		eightballCoolStatus = true;
 		setTimeout(function(){
