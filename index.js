@@ -152,16 +152,21 @@ client.on('message', (channel, tags, messages, self) => {
 		}, 500)
 	}
 
-	if(command === '!問' && argument !== "" && eightballCoolStatus === false && _channel === 'kira5033') {
-		var answer = eightball(argument)
-		eightballCoolStatus = true;
-		setTimeout(function(){
-			client.say(channel, `${answer} >> ${tags['display-name']}`)
-		}, 500)
-		setTimeout(function(){
-			eightballCoolStatus = false;
-		}, 10000)
-	}
+	// if(command === '!問' && argument !== "" && eightballCoolStatus === false && (_channel === 'kira5033' || _channel === 'vu84mida')) {
+	// 	eightball(argument)
+	// 	.then(answer => {
+	// 		eightballCoolStatus = true;
+	// 		setTimeout(function(){
+	// 			client.say(channel, `${answer} >> ${tags['display-name']}`)
+	// 			setTimeout(function(){
+	// 				eightballCoolStatus = false;
+	// 			}, 60*1000)
+	// 		}, 500)
+	// 	})
+	// 	.catch(error => {
+	// 		console.log(error);
+	// 	})
+	// }
 
 	/* Vote System - Start */
 	if(command === '!vt' && argument !== undefined && argument2 !== undefined){
