@@ -135,6 +135,7 @@ module.exports.kiraResponses = {
 			if(result){
 				var stringDB = [
 					'{{name}} 餓了嗎? 要不要ㄘㄘ {{food}} 這個很好ㄘ喔',
+					'{{name}} 今天要不要來點 {{food}} SeemsGood ',
 				]
 				switch(whattime){
 					case 'breakfast': selectFood = [...foodDB['breakfast']] ; break;
